@@ -4,8 +4,9 @@
 Authentication, either:
   * an "API credential" on the cloud environment for api.openai.com: the agent
     proxy adds the key to each request, so nothing is set in the session; or
-  * the OPENAI_API_KEY environment variable, handed to curl on stdin so it
-    never appears in a process list.
+  * the OPENAI_API_KEY environment variable, or an OPENAI_API_KEY=... line in
+    the git-ignored .env at the repo root; either way it is handed to curl on
+    stdin so it never appears in a process list, and it is never printed.
 Uses curl so the environment's HTTPS proxy settings apply as-is.
 
     python3 tools/generate_media.py              # run every job not yet on disk
@@ -42,6 +43,19 @@ def curl(args, key, body=None):
         raise RuntimeError(f"curl failed: {res.stderr.decode().strip()}")
     out, _, status = res.stdout.rpartition(b"\n")
     return int(status or 0), out
+
+
+def load_key():
+    """OPENAI_API_KEY from the environment, else from the git-ignored .env."""
+    key = os.environ.get("OPENAI_API_KEY", "").strip()
+    env = ROOT / ".env"
+    if not key and env.exists():
+        # utf-8-sig: Notepad and PowerShell 5.1 may prepend a BOM
+        for line in env.read_text(encoding="utf-8-sig").splitlines():
+            name, sep, value = line.partition("=")
+            if sep and name.strip() == "OPENAI_API_KEY":
+                key = value.strip().strip("\"'")
+    return key
 
 
 def fail(status, raw):
@@ -103,9 +117,9 @@ def main(argv):
     spec = json.loads((ROOT / "tools/media-prompts.json").read_text())
     jobs = [j for j in spec["jobs"] if not only or j["id"] in only]
 
-    key = os.environ.get("OPENAI_API_KEY", "").strip()
+    key = load_key()
     if not key and "--dry-run" not in flags:
-        print("OPENAI_API_KEY not set: relying on the environment's API credential for api.openai.com")
+        print("OPENAI_API_KEY not set (env or .env): relying on the environment's API credential for api.openai.com")
 
     for job in jobs:
         out = ROOT / job["out"]

@@ -25,8 +25,9 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 | Intro | Film leader 3·2·1 → RMK logosu (neon titreşimiyle yanar) + "presenteert" | Perde açılır; oturum başına bir kez oynar, tıklayınca atlanır |
 | SC 01 | **Title sequence:** araba dev "RMK" harflerinin içinde oynar | Scroll kamerayı M harfinin içinden geçirir (zoom-through), ardından "Uw auto speelt DE HOOFDROL" başlığı ve CTA'lar gelir |
 | — | Marquee | Scroll hızına göre hızlanır ve eğilir |
+| — | Establishing shot — atölye geniş planı (`werkplaats-wide`) | Tam genişlikte bant; scroll'la letterbox'tan tam kareye açılır (`clip-path`, pin yok), içte hafif paralaks; köşelerde kamera HUD'u |
 | SC 02 | Het verhaal | Kelimeler okundukça aydınlanır; krom logo scroll'la 3D döner, üzerinden ışık geçer, fareyle eğilir |
-| SC 03 | Het werk — "Vijf takes." | Sabitlenmiş yatay film şeridi; her kare **amber film negatifi** olarak gelir ve ortaya yaklaştıkça "banyo olup" pozitife döner; arkada paralaks dev yazı ve Take sayacı |
+| SC 03 | Het werk — "Vijf takes." | Sabitlenmiş yatay film şeridi; her hizmetin kendi karesi var (`take-*`); her kare **amber film negatifi** olarak gelir ve ortaya yaklaştıkça "banyo olup" pozitife döner; arkada paralaks dev yazı ve Take sayacı |
 | SC 04 | Close-up — "Elk detail telt." | Layered zoom: "ELK" ve "DETAIL" iki yana açılır, kare tam ekrana büyür, WebGL lens odaklanır (rack focus) ve farda anamorfik flare yanar |
 | SC 05 | Werkwijze — "Het draaiboek." | Storyboard kartları üst üste yığılır (sticky stack); çizimler kendini çizer |
 | — | CTA bandı | Dev "PLAN UW AFSPRAAK" şeridi, üzerine gelince kırmızıyla dolar |
@@ -63,6 +64,7 @@ assets/js/main.js         intro, Lenis, ScrollTrigger sahneleri, RMK maskesi, k�
 assets/js/cinema-gl.js    WebGL kamera (shader)
 assets/js/sound.js        WebAudio ses tasarımı
 assets/img/               optimize görseller (hero.webp 84 KB, emblem.webp, og-image.jpg, favicons)
+assets/img/gen/           AI ile üretilmiş görseller (gpt-image-1): 5 × take-*.webp, werkplaats-wide.webp (toplam ~490 KB)
 assets/fonts/             Anton, Instrument Serif, JetBrains Mono, Inter (OFL)
 assets/vendor/            GSAP 3.15 + ScrollTrigger + SplitText, Lenis 1.3
 bmw_m3_hero.png           orijinal görseller

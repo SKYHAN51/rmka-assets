@@ -620,6 +620,28 @@
       });
     });
 
+    /* Establishing shot: the letterbox opens to full frame, the still drifts inside */
+    if ($('.band')) {
+      gsap.fromTo('.band__frame', { clipPath: () => (isNarrow() ? 'inset(24% 4% 24% 4%)' : 'inset(28% 8% 28% 8%)') }, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.band', start: 'top 90%', end: 'top 10%', scrub: 0.6, invalidateOnRefresh: true },
+      });
+      gsap.fromTo('.band__frame img', { yPercent: -6, scale: 1.12 }, {
+        yPercent: 6,
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: '.band', start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+      gsap.from('.band__hud > span', {
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.band', start: 'top 40%' },
+      });
+    }
+
     /* Story: words light up as they are "read"; the chrome medal turns */
     const storyText = $('[data-words]');
     if (storyText && window.SplitText) {

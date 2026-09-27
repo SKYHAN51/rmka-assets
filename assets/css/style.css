@@ -767,6 +767,50 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
+   Establishing shot — the workshop band opens from letterbox to full frame
+   ========================================================================== */
+.band { position: relative; background: var(--black); overflow: hidden; }
+.band__frame {
+  position: relative;
+  height: min(100vh, 66.6vw);
+  height: min(100svh, 66.6vw);
+  min-height: 360px;
+  overflow: hidden;
+  will-change: clip-path;
+}
+.is-motion .band__frame { clip-path: inset(28% 8% 28% 8%); }
+.band__frame img {
+  position: absolute;
+  inset: -8% 0;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+  will-change: transform;
+}
+.band__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+}
+.band__hud {
+  position: absolute;
+  z-index: 1;
+  inset: calc(var(--bar) + 12px) calc(var(--gutter) + 8px);
+  font: 400 10.5px/1 var(--f-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-2);
+  pointer-events: none;
+}
+.band__hud > span { position: absolute; }
+.band__tl { top: 0; left: 0; }
+.band__tr { top: 0; right: 0; }
+.band__bl { bottom: 0; left: 0; }
+.band__br { bottom: 0; right: 0; }
+
+/* ==========================================================================
    SC 02 — Story
    ========================================================================== */
 .story__grid {
@@ -1463,6 +1507,10 @@ html.lenis, html.lenis body { height: auto; }
   .sound-toggle__label { display: none; }
   .hero__ctas { width: 100%; }
   .hero__ctas .btn { flex: 1 1 auto; }
+
+  .is-motion .band__frame { clip-path: inset(24% 4% 24% 4%); }
+  .band__hud { font-size: 9px; inset: 18px calc(var(--gutter) + 4px); }
+  .band__tr, .band__br { display: none; }
 
   .story__grid { grid-template-columns: 1fr; }
   .story__aside { position: static; gap: 24px; }

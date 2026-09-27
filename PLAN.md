@@ -30,6 +30,8 @@ export OPENAI_API_KEY="sk-..."
 $env:OPENAI_API_KEY="sk-..."
 ```
 
+Alternatif: repo kökündeki `.env` dosyasına `OPENAI_API_KEY=sk-...` satırını yaz. Dosya `.gitignore`'da, commit'e girmez; script env'de anahtar yoksa buradan okur. **Siteyi klasör olarak yüklemeden (FTP, `public_html`) önce `.env`'i sil**, yoksa herkese açık olur.
+
 İş bitince anahtarı OpenAI panelinden sil (revoke).
 
 ## 2. Görselleri ve videoyu üret
@@ -44,6 +46,8 @@ python3 tools/generate_media.py take-remmen --force   # tek birini yeniden üret
 - Çıktılar: `assets/img/gen/take-*.webp` (5 hizmet), `assets/img/gen/werkplaats-wide.webp`, `assets/video/dolly-headlight.mp4`.
 - Model adları env ile değiştirilebilir: `OPENAI_IMAGE_MODEL` (varsayılan `gpt-image-1`), `OPENAI_VIDEO_MODEL` (varsayılan `sora-2`).
 - **Dikkat:** Video (Sora) API çağrısı henüz gerçek API'ye karşı test edilmedi. Hata verirse OpenAI'nin güncel `/v1/videos` dokümanına bakıp `gen_video()` fonksiyonunu düzelt.
+- **Durum (2026-09-27):** 6 görsel üretildi ve siteye yerleştirildi (4a, 4b). Video üretilemedi: `sora-2` / `sora-2-pro` modelleri **2026-09-24'te kapatıldı**, `/v1/videos` artık 404 dönüyor ve hesapta başka video modeli yok. 4c, `assets/video/dolly-headlight.mp4` başka bir kaynaktan gelene kadar bekliyor.
+- `gpt-image-1` modeli 2026-10-23'te kapanacak; sonraki üretimlerde `OPENAI_IMAGE_MODEL=gpt-image-2` kullan.
 - Sonucu gözle kontrol et: markalı logo, yazı, bozuk el/parça varsa o işi `--force` ile yeniden üret.
 - Üretim OpenAI hesabından kredi harcar: 6 görsel ve 1 kısa video.
 

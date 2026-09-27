@@ -2,6 +2,8 @@
 
 rmka.nl için film temalı, tek sayfalık yeni tasarım. Build adımı yok: statik HTML + CSS + JS.
 
+> Sıradaki iş (AI görseller + scroll'la oynayan video) **[PLAN.md](PLAN.md)** dosyasında. Proje notları Claude Code için **[CLAUDE.md](CLAUDE.md)** dosyasında.
+
 ## Yerelde çalıştırma
 
 ```bash

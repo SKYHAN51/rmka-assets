@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Generate the site's extra imagery and footage with the OpenAI API.
 
-Reads the key from the OPENAI_API_KEY environment variable (never from a file
-in the repo) and hands it to curl on stdin, so it never appears in a process
-list. Uses curl so the environment's HTTPS proxy settings apply as-is.
+Authentication, either:
+  * an "API credential" on the cloud environment for api.openai.com: the agent
+    proxy adds the key to each request, so nothing is set in the session; or
+  * the OPENAI_API_KEY environment variable, handed to curl on stdin so it
+    never appears in a process list.
+Uses curl so the environment's HTTPS proxy settings apply as-is.
 
     python3 tools/generate_media.py              # run every job not yet on disk
     python3 tools/generate_media.py --dry-run    # show what would run
@@ -28,8 +31,10 @@ VIDEO_MODEL = os.environ.get("OPENAI_VIDEO_MODEL", "sora-2")
 
 def curl(args, key, body=None):
     """Run curl with the auth header supplied on stdin; return (status, bytes)."""
-    header = f"Authorization: Bearer {key}\n"
-    cmd = ["curl", "-sS", "-m", "600", "-H", "@-", "-w", "\n%{http_code}", *args]
+    header = f"Authorization: Bearer {key}\n" if key else ""
+    cmd = ["curl", "-sS", "-m", "600", "-w", "\n%{http_code}", *args]
+    if key:
+        cmd[1:1] = ["-H", "@-"]
     if body is not None:
         cmd += ["-H", "Content-Type: application/json", "--data-binary", body]
     res = subprocess.run(cmd, input=header.encode(), capture_output=True)
@@ -100,7 +105,7 @@ def main(argv):
 
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key and "--dry-run" not in flags:
-        sys.exit("OPENAI_API_KEY is not set. Add it in the environment settings and start a new session.")
+        print("OPENAI_API_KEY not set: relying on the environment's API credential for api.openai.com")
 
     for job in jobs:
         out = ROOT / job["out"]

@@ -1,0 +1,60 @@
+# RMK Autoservice — Apache configuration for STRATO web hosting
+# Test after every upload: https://rmka.nl/over-ons/ must 301 to /#verhaal,
+# and https://rmka.nl/.env must return 403.
+
+Options -Indexes
+DirectoryIndex index.html
+
+AddType image/webp .webp
+AddType font/woff2 .woff2
+AddCharset utf-8 .html .css .js .txt .xml
+
+# Never serve secrets, notes or tooling (the whole folder may be uploaded)
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.|\.(md|py)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^\.|\.(md|py)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+RedirectMatch 404 ^/(tools|\.git)(/|$)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # One address for Google: https://rmka.nl (no www, always https)
+  RewriteCond %{HTTP_HOST} ^www\.rmka\.nl$ [NC]
+  RewriteRule ^(.*)$ https://rmka.nl/$1 [R=301,L]
+  RewriteCond %{SERVER_PORT} !^443$
+  RewriteRule ^(.*)$ https://rmka.nl/$1 [R=301,L]
+
+  # Pages of the previous site, so their Google rankings carry over
+  RewriteRule ^over-ons/?$ /#verhaal [R=301,NE,L]
+  RewriteRule ^contacteer-ons/?$ /#afspraak [R=301,NE,L]
+  RewriteRule ^(juridische-kennisgeving|privacybeleid)/?$ / [R=301,L]
+  RewriteRule ^wp-sitemap.*\.xml$ /sitemap.xml [R=301,L]
+  # Only the literal request, not DirectoryIndex's internal lookup (avoids a loop)
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/markdown application/javascript application/json application/ld+json image/svg+xml
+</IfModule>
+
+# Files have no hashed names: short cache for code, longer for media and fonts
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

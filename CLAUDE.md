@@ -1,6 +1,6 @@
 # RMK Autoservice — site (rmka.nl)
 
-Sinematik, scroll'la ilerleyen tek sayfalık site. Film metaforu üzerine kurulu: sahneler (SC 01–07), timecode, klaket, jenerik.
+Sinematik, scroll'la ilerleyen tek sayfalık site. Film metaforu üzerine kurulu: sahneler (SC 01–08), timecode, klaket, jenerik.
 
 - Kullanıcıyla **Türkçe** konuş. Sitenin metinleri **Felemenkçe** (nl-NL) kalır.
 - Yapılacak iş varsa önce `PLAN.md`'yi oku.
@@ -18,7 +18,9 @@ npx http-server -p 8080 -c-1 .
 - `assets/js/cinema-gl.js`: bağımlılıksız WebGL "kamera" (`CinemaGL.create(canvas, {src, state})`). `state` alanları: zoom, blur, aberr, flare, vel, pos, pan, reveal.
 - `assets/js/sound.js`: WebAudio sesleri (`RMKSound`). Varsayılan kapalı.
 - `assets/vendor/`: GSAP 3.15 ve Lenis 1.3 repoya gömülü; CDN kullanılmıyor.
-- `tools/generate_media.py` + `tools/media-prompts.json`: OpenAI ile görsel/video üretimi (`OPENAI_API_KEY` env'den okunur, dosyaya yazılmaz).
+- `tools/generate_media.py` + `tools/media-prompts.json`: OpenAI ile görsel/video üretimi (`OPENAI_API_KEY` env'den ya da git-ignored `.env`'den okunur).
+- SEO/GEO: `<head>`'deki JSON-LD (AutoRepair + WebSite + FAQPage), `robots.txt`, `sitemap.xml`, `llms.txt`, Strato için `.htaccess`. Ayrıntılar ve site dışı yapılacaklar: `SEO.md`.
+- **SSS cevaplarını değiştirirsen** `<head>`'deki FAQPage metnini de birebir aynı güncelle. İşletme bilgisi (isim, adres, saat) değişirse `index.html`, `llms.txt` ve `SEO.md`'deki NAP birlikte güncellenmeli.
 
 ## Dikkat edilecekler (öğrenilmiş dersler)
 - **Pin kullanan sahneler** (hero, work, closeup) önce oluşturulur; `trackScenes()` en son çağrılır ki pozisyonlar pin boşluğunu hesaba katsın.

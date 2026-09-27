@@ -107,7 +107,8 @@ git push
 Ardından main'e pull request aç ve statik hosting'e yayınla (Netlify, Vercel, Cloudflare Pages ya da mevcut sunucu).
 
 ## Hâlâ açık olanlar (medyadan bağımsız)
-- [ ] Açılış saatleri, KvK numarası, posta kodu.
+- [x] Açılış saatleri ve posta kodu (2026-09-27, RMK onaylı). SEO/GEO işleri ve site dışı yapılacaklar: [SEO.md](SEO.md).
+- [ ] KvK numarası.
 - [ ] Metinlerin RMK ile kontrolü.
 - [ ] Logo görselindeki telefon numarası hatalı (`06115606603`, fazladan bir 6 var). Sitede gizli, ama logo başka yerde kullanılıyorsa düzeltilmeli.
 - [ ] İleride: AI görseller yerine ya da yanına RMK'nın gerçek atölye fotoğrafları (güven için).

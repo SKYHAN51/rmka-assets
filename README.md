@@ -30,8 +30,9 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 | SC 03 | Het werk — "Vijf takes." | Sabitlenmiş yatay film şeridi; her hizmetin kendi karesi var (`take-*`); her kare **amber film negatifi** olarak gelir ve ortaya yaklaştıkça "banyo olup" pozitife döner; arkada paralaks dev yazı ve Take sayacı |
 | SC 04 | Close-up — "Elk detail telt." | Layered zoom: "ELK" ve "DETAIL" iki yana açılır, kare tam ekrana büyür, WebGL lens odaklanır (rack focus) ve farda anamorfik flare yanar |
 | SC 05 | Werkwijze — "Het draaiboek." | Storyboard kartları üst üste yığılır (sticky stack); çizimler kendini çizer |
+| SC 06 | Vragen — "Veelgestelde vragen." | Q&A: 6 soru-cevap, yerel `<details>` akordeonu (JS olmadan çalışır); cevaplar `<head>`'deki FAQPage verisiyle birebir aynı olmalı |
 | — | CTA bandı | Dev "PLAN UW AFSPRAAK" şeridi, üzerine gelince kırmızıyla dolar |
-| SC 06 | Afspraak — "Klaar voor de volgende take?" | Klaket kapanır + flaş (+ ses açıksa klaket sesi) |
+| SC 07 | Afspraak — "Klaar voor de volgende take?" | Klaket kapanır + flaş (+ ses açıksa klaket sesi); açılış saatleri |
 | Aftiteling | Footer | Jenerik + RMK logosu dolar, "Terugspoelen" başa sarar |
 
 **Her ekranda:** film greni, vinyet, vizör köşeleri, scroll'a bağlı timecode (`REC 00:01:12:08`), aktif sahne göstergesi, masaüstünde özel imleç ve manyetik butonlar, scroll hızıyla eğilen başlıklar.
@@ -50,15 +51,24 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 - WhatsApp linkleri hazır bir mesajla açılır: *"Hallo RMK, ik wil graag een afspraak maken. Mijn kenteken is: "*
 - Not: Logo görselinde numara `06115606603` olarak yazılı, yani fazladan bir **6** var. Sitede logonun bu kısmı gizli, ama logo başka yerde (kartvizit, araç giydirme vb.) kullanılıyorsa düzeltilmeli.
 
+## SEO ve GEO
+
+Google ve AI aramaları için yapılanlar, Strato'ya yükleme sonrası testler ve site dışı yapılacaklar (Google Bedrijfsprofiel, yorumlar, Search Console): **[SEO.md](SEO.md)**.
+
 ## Yayından önce yapılacaklar
 
-- [ ] Varsa açılış saatlerini, KvK numarasını ve posta kodunu ekleyin.
+- [x] Açılış saatleri ve posta kodu eklendi (RMK onaylı: 6921 RH, ma–vr 09–18, za 09–16).
+- [ ] KvK numarasını ekleyin.
 - [ ] Metinleri RMK ile birlikte kontrol edin. Mevcut site ve arama sonuçlarındaki bilgilerden taslak olarak yazıldı.
+- [ ] Yüklemeden önce `.env` dosyasını silin.
 
 ## Dosyalar
 
 ```
 index.html
+robots.txt, sitemap.xml   arama motorları (tek URL: https://rmka.nl/)
+llms.txt                  AI asistanları için işletme özeti (llmstxt.org)
+.htaccess                 Strato/Apache: eski URL'lerden 301, https + www yok, gizli dosyalara erişim yok
 assets/css/style.css      tüm stiller (tasarım token'ları :root içinde)
 assets/js/main.js         intro, Lenis, ScrollTrigger sahneleri, RMK maskesi, kıvılcımlar, HUD, imleç
 assets/js/cinema-gl.js    WebGL kamera (shader)

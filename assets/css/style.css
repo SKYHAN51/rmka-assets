@@ -695,6 +695,25 @@ html.lenis, html.lenis body { height: auto; }
   align-self: end;
   margin-bottom: clamp(20px, 3.5vh, 40px);
 }
+.hero__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 clamp(14px, 2.2vh, 24px) 0.2em;
+  font: 400 11px/1.3 var(--f-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-2);
+}
+.hero__kicker::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px rgba(227, 32, 45, 0.8);
+}
 .hero__pre {
   display: block;
   font: italic 400 clamp(1.8rem, 4.4vw, 4.6rem)/1 var(--f-serif);
@@ -1215,6 +1234,66 @@ html.lenis, html.lenis body { height: auto; }
 .board__copy p:last-child { color: var(--mute); font-size: clamp(15px, 1.1vw, 17px); max-width: 36ch; }
 
 /* ==========================================================================
+   SC 06 — Vragen (FAQ): native <details>, works without JS
+   ========================================================================== */
+.faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 120px);
+  align-items: start;
+}
+.faq__head {
+  position: sticky;
+  top: calc(var(--bar) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* "Veelgestelde" is one long word: size it to the narrow column so it never clips */
+.faq__head .display { font-size: clamp(2.6rem, 6vw, 7rem); }
+.faq__list { border-top: 1px solid var(--line); }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: baseline;
+  padding: 26px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__num { font: 400 11px/1 var(--f-mono); letter-spacing: 0.1em; color: var(--red-hot); }
+.faq__item h3 {
+  font: 500 clamp(1.15rem, 1.7vw, 1.6rem)/1.25 var(--f-sans);
+  letter-spacing: -0.015em;
+  transition: color 0.4s var(--ease);
+}
+.faq__item summary:hover h3 { color: var(--paper-2); }
+.faq__icon { position: relative; width: 14px; height: 14px; align-self: center; }
+.faq__icon::before, .faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1.5px;
+  background: var(--paper);
+  transition: transform 0.5s var(--ease);
+}
+.faq__icon::after { transform: rotate(90deg); }
+.faq__item[open] .faq__icon::after { transform: rotate(0deg); }
+.faq__item[open] .faq__icon::before { background: var(--red-hot); }
+.faq__item p {
+  padding: 0 0 28px calc(2ch + 20px);
+  max-width: 62ch;
+  color: var(--mute);
+  font-size: clamp(15px, 1.1vw, 17px);
+}
+.faq__item p a { color: var(--paper); border-bottom: 1px solid var(--line-2); }
+.faq__item p a:hover { border-color: var(--red-hot); }
+
+/* ==========================================================================
    CTA band
    ========================================================================== */
 .cta-roll {
@@ -1322,6 +1401,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 .contact > div { padding: 20px 20px 20px 0; border-bottom: 1px solid var(--line); }
 .contact > div:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
+.contact > .contact__wide { grid-column: 1 / -1; padding-left: 0; border-left: 0; }
 .contact dt {
   font: 400 10.5px/1 var(--f-mono);
   letter-spacing: 0.14em;
@@ -1537,6 +1617,12 @@ html.lenis, html.lenis body { height: auto; }
   .closeup__w--l { right: auto; left: 50%; top: auto; bottom: calc(50% + var(--fh) / 2 + 2vh); translate: -50% 0; }
   .closeup__w--r { left: 50%; top: calc(50% + var(--fh) / 2 + 2vh); translate: -50% 0; }
   .closeup__w--c { font-size: clamp(4rem, 24vw, 9rem); bottom: calc(var(--bar) + 10vh); }
+
+  .faq__grid { grid-template-columns: 1fr; }
+  .faq__head { position: static; }
+  .faq__head .display { font-size: min(calc((100vw - 2 * var(--gutter)) / 5.8), 6rem); }
+  .faq__item summary { gap: 14px; padding: 20px 0; }
+  .faq__item p { padding-left: 0; }
 
   .boards { gap: 10vh; }
   .board { top: calc(var(--bar) + 12px + var(--i) * 12px); }

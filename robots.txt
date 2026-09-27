@@ -1,0 +1,6 @@
+# RMK Autoservice — zoekmachines en AI-assistenten zijn welkom
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://rmka.nl/sitemap.xml

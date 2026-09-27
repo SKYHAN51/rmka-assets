@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>RMK Autoservice — Onderhoud &amp; reparatie in Duiven</title>
-  <meta name="description" content="RMK Autoservice in Duiven: onderhoud, reparatie, banden, remmen en onderstel met de precisie van een filmset. Plan eenvoudig een afspraak via WhatsApp.">
+  <title>Garage Duiven: APK, onderhoud &amp; reparatie | RMK Autoservice</title>
+  <meta name="description" content="Autogarage in Duiven voor APK, onderhoud, diagnose en reparatie, plus banden, remmen en onderstel. Segment 24E. Plan uw afspraak eenvoudig via WhatsApp.">
   <meta name="theme-color" content="#0a0a0b">
   <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://rmka.nl/">
@@ -12,8 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:site_name" content="RMK Autoservice">
-  <meta property="og:title" content="RMK Autoservice — Uw auto speelt de hoofdrol">
-  <meta property="og:description" content="Onderhoud, reparatie, banden, remmen en onderstel in Duiven. Afspraak via WhatsApp.">
+  <meta property="og:title" content="RMK Autoservice — autogarage in Duiven">
+  <meta property="og:description" content="APK, onderhoud, diagnose, reparatie, banden, remmen en onderstel in Duiven. Afspraak via WhatsApp.">
   <meta property="og:url" content="https://rmka.nl/">
   <meta property="og:image" content="https://rmka.nl/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -36,27 +36,62 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    "name": "RMK Autoservice",
-    "url": "https://rmka.nl/",
-    "image": "https://rmka.nl/assets/img/og-image.jpg",
-    "logo": "https://rmka.nl/assets/img/emblem.webp",
-    "telephone": "+31611560603",
-    "email": "info@rmka.nl",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Segment 24E",
-      "addressLocality": "Duiven",
-      "addressRegion": "Gelderland",
-      "addressCountry": "NL"
-    },
-    "areaServed": "Duiven",
-    "makesOffer": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Onderhoud" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparatie" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Banden" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remmen" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Onderstel" } }
+    "@graph": [
+      {
+        "@type": "AutoRepair",
+        "@id": "https://rmka.nl/#business",
+        "name": "RMK Autoservice",
+        "description": "Autogarage in Duiven voor APK-keuring, onderhoud, diagnose, reparatie, banden, remmen en onderstel.",
+        "url": "https://rmka.nl/",
+        "image": "https://rmka.nl/assets/img/og-image.jpg",
+        "logo": "https://rmka.nl/assets/img/emblem.webp",
+        "telephone": "+31611560603",
+        "email": "info@rmka.nl",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Segment 24E",
+          "postalCode": "6921 RH",
+          "addressLocality": "Duiven",
+          "addressRegion": "Gelderland",
+          "addressCountry": "NL"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 51.9682, "longitude": 6.0136 },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Segment+24E+6921+RH+Duiven",
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "16:00" }
+        ],
+        "areaServed": { "@type": "City", "name": "Duiven" },
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "APK-keuring" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Onderhoud" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnose" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparatie" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Banden" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remmen" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Onderstel" } }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://rmka.nl/#website",
+        "url": "https://rmka.nl/",
+        "name": "RMK Autoservice",
+        "inLanguage": "nl-NL",
+        "publisher": { "@id": "https://rmka.nl/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://rmka.nl/#vragen",
+        "mainEntity": [
+          { "@type": "Question", "name": "Kan ik bij RMK Autoservice terecht voor de APK?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, u kunt bij RMK Autoservice in Duiven terecht voor de APK-keuring. Stuur een WhatsApp-bericht met uw kenteken en we plannen een moment dat u past." } },
+          { "@type": "Question", "name": "Wat zijn de openingstijden van RMK Autoservice?", "acceptedAnswer": { "@type": "Answer", "text": "RMK Autoservice is open van maandag tot en met vrijdag van 09:00 tot 18:00 en op zaterdag van 09:00 tot 16:00. Op zondag zijn we gesloten." } },
+          { "@type": "Question", "name": "Waar zit RMK Autoservice?", "acceptedAnswer": { "@type": "Answer", "text": "RMK Autoservice zit aan het Segment 24E, 6921 RH Duiven, in de provincie Gelderland." } },
+          { "@type": "Question", "name": "Er brandt een storingslampje. Kunnen jullie de oorzaak vinden?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. We lezen de storing uit met een diagnose, zoeken de oorzaak en vertellen u eerlijk wat nodig is voordat we aan de slag gaan." } },
+          { "@type": "Question", "name": "Welke werkzaamheden voert RMK Autoservice uit?", "acceptedAnswer": { "@type": "Answer", "text": "APK-keuring, onderhoud, diagnose en reparatie, banden (nieuwe banden, wisselen en balanceren), remmen (remblokken, remschijven en remvloeistof) en onderstel (schokdempers, veren, draagarmen en fuseekogels)." } },
+          { "@type": "Question", "name": "Hoe maak ik een afspraak?", "acceptedAnswer": { "@type": "Answer", "text": "Stuur een WhatsApp-bericht naar 06 11 56 06 03 met uw kenteken en wat er speelt, of bel naar hetzelfde nummer. Mailen kan ook, naar info@rmka.nl." } }
+        ]
+      }
     ]
   }
   </script>
@@ -106,7 +141,8 @@
         <li><a href="#verhaal"><span>01</span>Verhaal</a></li>
         <li><a href="#werk"><span>02</span>Werk</a></li>
         <li><a href="#werkwijze"><span>03</span>Werkwijze</a></li>
-        <li><a href="#afspraak"><span>04</span>Contact</a></li>
+        <li><a href="#vragen"><span>04</span>Vragen</a></li>
+        <li><a href="#afspraak"><span>05</span>Contact</a></li>
       </ul>
     </nav>
 
@@ -130,12 +166,13 @@
       <a href="#verhaal"><span>01</span>Het verhaal</a>
       <a href="#werk"><span>02</span>Het werk</a>
       <a href="#werkwijze"><span>03</span>Werkwijze</a>
-      <a href="#afspraak"><span>04</span>Afspraak</a>
+      <a href="#vragen"><span>04</span>Vragen</a>
+      <a href="#afspraak"><span>05</span>Afspraak</a>
     </nav>
     <div class="menu__foot">
       <a href="tel:+31611560603">06 11 56 06 03</a>
       <a href="mailto:info@rmka.nl">info@rmka.nl</a>
-      <span>Segment 24E, Duiven</span>
+      <span>Segment 24E, 6921 RH Duiven</span>
     </div>
   </div>
 
@@ -177,12 +214,13 @@
           <p class="slug hero__slug"><span>SC 01</span>INT. Werkplaats Duiven — Nacht</p>
 
           <h1 class="hero__title">
+            <span class="hero__kicker">RMK Autoservice — autogarage in Duiven</span>
             <span class="hero__pre">Uw auto speelt</span>
             <span class="hero__main" data-split>De hoofdrol</span>
           </h1>
 
           <div class="hero__foot">
-            <p class="hero__lead">Onderhoud, reparatie, banden, remmen en onderstel — uitgevoerd met de precisie van een filmset. RMK Autoservice, Duiven.</p>
+            <p class="hero__lead">APK, onderhoud, diagnose en reparatie, banden, remmen en onderstel — uitgevoerd met de precisie van een filmset. RMK Autoservice, Duiven.</p>
             <div class="hero__ctas">
               <a class="btn btn--primary" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
                 Plan via WhatsApp
@@ -285,14 +323,14 @@
             <li class="frame">
               <div class="frame__img"><div class="frame__pan"><img src="assets/img/gen/take-onderhoud.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"></div></div>
               <div class="frame__meta"><span>Take 01</span><span>00:00:24:00</span></div>
-              <h3>Onderhoud</h3>
-              <p>Olie, filters, vloeistoffen en een grondige controle — zodat uw auto blijft doen wat hij moet doen.</p>
+              <h3>Onderhoud &amp; APK</h3>
+              <p>Olie, filters, vloeistoffen, een grondige controle en de APK-keuring — zodat uw auto blijft doen wat hij moet doen.</p>
             </li>
             <li class="frame">
               <div class="frame__img"><div class="frame__pan"><img src="assets/img/gen/take-reparatie.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"></div></div>
               <div class="frame__meta"><span>Take 02</span><span>00:00:48:00</span></div>
               <h3>Reparatie</h3>
-              <p>Storing, vreemd geluid of een lampje op het dashboard? We zoeken de oorzaak en lossen het vakkundig op.</p>
+              <p>Storing, vreemd geluid of een lampje op het dashboard? We lezen de storing uit, zoeken de oorzaak en lossen het vakkundig op.</p>
             </li>
             <li class="frame">
               <div class="frame__img"><div class="frame__pan"><img src="assets/img/gen/take-banden.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"></div></div>
@@ -431,6 +469,43 @@
       </div>
     </section>
 
+    <!-- ░░ SC 06 — Vragen (FAQ; same answers as the FAQPage data in <head>) ░░ -->
+    <section class="faq section" id="vragen" data-scene="06" data-scene-name="Vragen">
+      <div class="container faq__grid">
+        <div class="faq__head">
+          <p class="slug"><span>SC 06</span>Q&amp;A — Na de voorstelling</p>
+          <h2 class="display">Veelgestelde <em>vragen.</em></h2>
+        </div>
+
+        <div class="faq__list">
+          <details class="faq__item" open>
+            <summary><span class="faq__num">01</span><h3>Kan ik bij RMK Autoservice terecht voor de APK?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>Ja, u kunt bij RMK Autoservice in Duiven terecht voor de APK-keuring. Stuur een WhatsApp-bericht met uw kenteken en we plannen een moment dat u past.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span class="faq__num">02</span><h3>Wat zijn de openingstijden van RMK Autoservice?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>RMK Autoservice is open van maandag tot en met vrijdag van 09:00 tot 18:00 en op zaterdag van 09:00 tot 16:00. Op zondag zijn we gesloten.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span class="faq__num">03</span><h3>Waar zit RMK Autoservice?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>RMK Autoservice zit aan het Segment 24E, 6921 RH Duiven, in de provincie Gelderland. <a href="https://www.google.com/maps/search/?api=1&amp;query=Segment+24E+6921+RH+Duiven" target="_blank" rel="noopener" data-cursor="Route">Open de route in Google Maps</a>.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span class="faq__num">04</span><h3>Er brandt een storingslampje. Kunnen jullie de oorzaak vinden?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>Ja. We lezen de storing uit met een diagnose, zoeken de oorzaak en vertellen u eerlijk wat nodig is voordat we aan de slag gaan.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span class="faq__num">05</span><h3>Welke werkzaamheden voert RMK Autoservice uit?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>APK-keuring, onderhoud, diagnose en reparatie, banden (nieuwe banden, wisselen en balanceren), remmen (remblokken, remschijven en remvloeistof) en onderstel (schokdempers, veren, draagarmen en fuseekogels).</p>
+          </details>
+          <details class="faq__item">
+            <summary><span class="faq__num">06</span><h3>Hoe maak ik een afspraak?</h3><i class="faq__icon" aria-hidden="true"></i></summary>
+            <p>Stuur een WhatsApp-bericht naar <a href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp">06 11 56 06 03</a> met uw kenteken en wat er speelt, of bel naar hetzelfde nummer. Mailen kan ook, naar <a href="mailto:info@rmka.nl">info@rmka.nl</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ░░ CTA band ░░ -->
     <a class="cta-roll" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp" aria-label="Plan uw afspraak via WhatsApp">
       <span class="cta-roll__track" aria-hidden="true">
@@ -439,11 +514,11 @@
       </span>
     </a>
 
-    <!-- ░░ SC 06 — Afspraak ░░ -->
-    <section class="action section" id="afspraak" data-scene="06" data-scene-name="Afspraak">
+    <!-- ░░ SC 07 — Afspraak ░░ -->
+    <section class="action section" id="afspraak" data-scene="07" data-scene-name="Afspraak">
       <div class="container action__grid">
         <div class="action__copy">
-          <p class="slug"><span>SC 06</span>EXT. Segment 24E, Duiven — Nu</p>
+          <p class="slug"><span>SC 07</span>EXT. Segment 24E, Duiven — Nu</p>
           <h2 class="display display--xl">Klaar voor <em>de volgende take?</em></h2>
           <p class="action__lead">Stuur ons een bericht via WhatsApp met uw kenteken en wat er speelt. Wij regelen de rest.</p>
 
@@ -458,7 +533,7 @@
           <dl class="contact">
             <div>
               <dt>Locatie</dt>
-              <dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Segment+24E+Duiven" target="_blank" rel="noopener" data-cursor="Route">Segment 24E<br>Duiven, Gelderland</a></dd>
+              <dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Segment+24E+6921+RH+Duiven" target="_blank" rel="noopener" data-cursor="Route">Segment 24E<br>6921 RH Duiven</a></dd>
             </div>
             <div>
               <dt>Telefoon</dt>
@@ -471,6 +546,10 @@
             <div>
               <dt>Afspraak</dt>
               <dd><a href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener">Via WhatsApp</a></dd>
+            </div>
+            <div class="contact__wide">
+              <dt>Openingstijden</dt>
+              <dd>Maandag t/m vrijdag 09:00–18:00<br>Zaterdag 09:00–16:00 · zondag gesloten</dd>
             </div>
           </dl>
         </div>
@@ -501,14 +580,15 @@
   </main>
 
   <!-- ░░ Aftiteling ░░ -->
-  <footer class="credits" data-scene="07" data-scene-name="Aftiteling">
+  <footer class="credits" data-scene="08" data-scene-name="Aftiteling">
     <div class="credits__roll container">
       <p class="slug credits__slug">Aftiteling</p>
       <dl>
         <div><dt>Hoofdrol</dt><dd>Uw auto</dd></div>
         <div><dt>Regie &amp; uitvoering</dt><dd>RMK Autoservice</dd></div>
         <div><dt>Monteurs</dt><dd>Team RMK</dd></div>
-        <div><dt>Locatie</dt><dd>Segment 24E, Duiven</dd></div>
+        <div><dt>Locatie</dt><dd>Segment 24E, 6921 RH Duiven</dd></div>
+        <div><dt>Draaitijden</dt><dd>Ma–vr 09–18 · za 09–16</dd></div>
         <div><dt>Telefoon</dt><dd><a href="tel:+31611560603">06 11 56 06 03</a></dd></div>
         <div><dt>E-mail</dt><dd><a href="mailto:info@rmka.nl">info@rmka.nl</a></dd></div>
         <div><dt>Met dank aan</dt><dd>Al onze klanten</dd></div>

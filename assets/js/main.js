@@ -196,6 +196,9 @@
     });
   };
 
+  // Opening or closing an FAQ answer changes the page height: re-measure every trigger
+  $$('.faq__item').forEach((d) => d.addEventListener('toggle', () => ScrollTrigger.refresh()));
+
   // Rewind: scroll back to the top while the REC label turns into ◀◀ REW
   function rewind() {
     const rec = $('[data-rec]');
@@ -483,7 +486,7 @@
     window.addEventListener('resize', () => { layoutMask(); });
     const chars = heroChars();
     gsap.set(chars, { yPercent: 115 });
-    gsap.set(['.hero__pre', '.hero__slug', '.hero__lead', '.hero__ctas > *'], { opacity: 0 });
+    gsap.set(['.hero__kicker', '.hero__pre', '.hero__slug', '.hero__lead', '.hero__ctas > *'], { opacity: 0 });
 
     // After the curtains: focus pull on the footage inside the letters
     const heroIn = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
@@ -578,7 +581,7 @@
     else tl.fromTo('.hero__media img', { scale: 1.28 }, { scale: 1, duration: 1, ease: 'power2.out' }, 0);
 
     tl.to(chars, { yPercent: 0, stagger: 0.02, duration: 0.35, ease: 'power3.out' }, 1.0)
-      .fromTo('.hero__pre', { yPercent: 80, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.3, ease: 'power3.out' }, 1.05)
+      .fromTo(['.hero__kicker', '.hero__pre'], { yPercent: 80, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.04, duration: 0.3, ease: 'power3.out' }, 1.05)
       .fromTo(['.hero__slug', '.hero__lead', '.hero__ctas > *'], { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.04, duration: 0.3, ease: 'power3.out' }, 1.15)
       .to({}, { duration: 0.4 });
 
@@ -841,6 +844,16 @@
           invalidateOnRefresh: true,
         },
       });
+    });
+
+    /* Q&A: the questions roll in one by one */
+    gsap.from('.faq__item', {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.07,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: '.faq__list', start: 'top 85%' },
     });
 
     /* Action: the clapperboard snaps shut — ACTIE! */

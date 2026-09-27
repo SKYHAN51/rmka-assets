@@ -378,10 +378,11 @@ html.lenis, html.lenis body { height: auto; }
   gap: 10px;
   opacity: 0;
 }
-.intro__kicker {
-  font: 400 clamp(2.6rem, 8vw, 6.5rem)/0.9 var(--f-display);
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
+.intro__logo {
+  width: min(70vw, 460px);
+  height: auto;
+  margin-inline: auto;
+  filter: drop-shadow(0 0 48px rgba(227, 32, 45, 0.35));
 }
 .intro__presents {
   font: italic 400 clamp(1.4rem, 3vw, 2.4rem)/1 var(--f-serif);
@@ -428,24 +429,14 @@ html.lenis, html.lenis body { height: auto; }
 .hud.is-scrolled::before { opacity: 1; }
 .hud.is-hidden { transform: translateY(-110%); }
 
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand__mark {
-  font: 400 30px/1 var(--f-display);
-  letter-spacing: 0.02em;
-  position: relative;
-  padding-right: 12px;
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand__logo {
+  height: clamp(44px, calc(var(--bar) - 16px), 76px);
+  width: auto;
+  filter: brightness(1.25) contrast(1.08) drop-shadow(0 0 14px rgba(227, 32, 45, 0.35));
+  transition: transform 0.7s var(--ease);
 }
-.brand__mark::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 4px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--red-hot);
-  box-shadow: 0 0 12px var(--red);
-}
+.brand:hover .brand__logo { transform: rotate(-6deg) scale(1.05); }
 .brand__sub {
   font: 400 9.5px/1.25 var(--f-mono);
   letter-spacing: 0.16em;

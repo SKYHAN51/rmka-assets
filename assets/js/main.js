@@ -301,16 +301,18 @@
     tl.to('.intro__leader', { opacity: 0, scale: 1.15, duration: 0.25, ease: 'power2.in' }, 1.5)
       .to('.intro__skip', { opacity: 0, duration: 0.2 }, 1.5)
       .fromTo('.intro__title', { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.75)
-      .from('.intro__kicker', { yPercent: 40, opacity: 0, filter: 'blur(10px)', duration: 0.8, ease: 'expo.out' }, 1.75)
-      .from('.intro__presents', { opacity: 0, y: 10, duration: 0.6, ease: 'expo.out' }, 1.95)
-      .to('.intro__title', { opacity: 0, duration: 0.35, ease: 'power2.in' }, 2.75)
-      .addLabel('open', 3)
+      // Logo blooms in, then the neon ring flickers on
+      .fromTo('.intro__logo', { scale: 0.86, opacity: 0, filter: 'blur(14px) brightness(2.2)' }, { scale: 1, opacity: 1, filter: 'blur(0px) brightness(1)', duration: 1.1, ease: 'expo.out' }, 1.75)
+      .to('.intro__logo', { keyframes: { opacity: [1, 0.3, 1, 0.55, 1] }, duration: 0.4, ease: 'none' }, 2.1)
+      .from('.intro__presents', { opacity: 0, y: 10, duration: 0.6, ease: 'expo.out' }, 2.2)
+      .to('.intro__title', { opacity: 0, scale: 1.04, duration: 0.4, ease: 'power2.in' }, 3.1)
+      .addLabel('open', 3.35)
       .to('.intro__half--top', { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, 'open')
       .to('.intro__half--bottom', { yPercent: 100, duration: 1.2, ease: 'expo.inOut' }, 'open')
       .call(() => heroIn.play(0), null, 'open+=0.35');
 
     intro.addEventListener('click', () => {
-      if (tl.time() < 3) tl.seek('open');
+      if (tl.time() < tl.labels.open) tl.seek('open');
     }, { once: true });
   }
 

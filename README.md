@@ -20,7 +20,7 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 
 | Sahne | Bölüm | Efekt |
 | --- | --- | --- |
-| Intro | Film leader 3·2·1 → "RMK Autoservice presenteert" | Perde açılır; oturum başına bir kez oynar, tıklayınca atlanır |
+| Intro | Film leader 3·2·1 → RMK logosu (neon titreşimiyle yanar) + "presenteert" | Perde açılır; oturum başına bir kez oynar, tıklayınca atlanır |
 | SC 01 | Hero — "Uw auto speelt de hoofdrol" | Letterbox bantları, focus-pull (blur → net), harf harf başlık |
 | — | Marquee | Scroll hızına göre hızlanır |
 | SC 02 | Het verhaal | Kelimeler okundukça aydınlanır, logo parallax |
@@ -55,7 +55,7 @@ bmw_m3_hero.png           orijinal görseller
 elite_logo_remastered_transparent.png
 ```
 
-`emblem.webp`, orijinal logodan üretildi: alt kısmı karanlığa doğru eriyor, böylece logodaki telefon satırı sitede görünmüyor.
+`emblem.webp` (intro ve hikaye bölümü) ile `logo-mark.webp` (header), orijinal logodan üretildi: alt kısmı karanlığa doğru eriyor, böylece logodaki telefon satırı sitede görünmüyor.
 
 ## Lisanslar
 

@@ -16,7 +16,9 @@ Ardından http://localhost:8080 adresini açın.
 
 ## Yayınlama
 
-Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, Cloudflare Pages, GitHub Pages ya da mevcut sunucunun `public_html` klasörü). Tüm fontlar ve kütüphaneler `assets/` içinde; harici CDN veya Google Fonts çağrısı yok, bu da GDPR açısından avantajlı.
+Site **Vercel**'de yayınlanır, domain ve e-posta **Strato**'da kalır. Vercel, `vercel.json`'daki ayarla `node tools/build.mjs` çalıştırır; bu komut yalnızca site dosyalarını `dist/`'e kopyalar (notlar, `tools/` ve `.env` yayınlanmaz). Adım adım kurulum ve Strato DNS ayarları: [SEO.md](SEO.md#yayına-alma-vercel--strato-domain).
+
+Tüm fontlar ve kütüphaneler `assets/` içinde; harici CDN veya Google Fonts çağrısı yok, bu da GDPR açısından avantajlı.
 
 ## Sahneler
 
@@ -53,14 +55,13 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 
 ## SEO ve GEO
 
-Google ve AI aramaları için yapılanlar, Strato'ya yükleme sonrası testler ve site dışı yapılacaklar (Google Bedrijfsprofiel, yorumlar, Search Console): **[SEO.md](SEO.md)**.
+Google ve AI aramaları için yapılanlar, yayına alma (Vercel + Strato DNS) ve site dışı yapılacaklar (Google Bedrijfsprofiel, yorumlar, Search Console): **[SEO.md](SEO.md)**.
 
 ## Yayından önce yapılacaklar
 
 - [x] Açılış saatleri ve posta kodu eklendi (RMK onaylı: 6921 RH, ma–vr 09–18, za 09–16).
 - [ ] KvK numarasını ekleyin.
 - [ ] Metinleri RMK ile birlikte kontrol edin. Mevcut site ve arama sonuçlarındaki bilgilerden taslak olarak yazıldı.
-- [ ] Yüklemeden önce `.env` dosyasını silin.
 
 ## Dosyalar
 
@@ -68,7 +69,7 @@ Google ve AI aramaları için yapılanlar, Strato'ya yükleme sonrası testler v
 index.html
 robots.txt, sitemap.xml   arama motorları (tek URL: https://rmka.nl/)
 llms.txt                  AI asistanları için işletme özeti (llmstxt.org)
-.htaccess                 Strato/Apache: eski URL'lerden 301, https + www yok, gizli dosyalara erişim yok
+vercel.json               Vercel: build (tools/build.mjs → dist/), eski URL'lerden 301, cache başlıkları
 assets/css/style.css      tüm stiller (tasarım token'ları :root içinde)
 assets/js/main.js         intro, Lenis, ScrollTrigger sahneleri, RMK maskesi, kıvılcımlar, HUD, imleç
 assets/js/cinema-gl.js    WebGL kamera (shader)

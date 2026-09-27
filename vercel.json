@@ -1,0 +1,40 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "node tools/build.mjs",
+  "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/over-ons", "destination": "/", "statusCode": 301 },
+    { "source": "/over-ons/", "destination": "/", "statusCode": 301 },
+    { "source": "/contacteer-ons", "destination": "/", "statusCode": 301 },
+    { "source": "/contacteer-ons/", "destination": "/", "statusCode": 301 },
+    { "source": "/juridische-kennisgeving", "destination": "/", "statusCode": 301 },
+    { "source": "/juridische-kennisgeving/", "destination": "/", "statusCode": 301 },
+    { "source": "/privacybeleid", "destination": "/", "statusCode": 301 },
+    { "source": "/privacybeleid/", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-sitemap.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/wp-sitemap-posts-page-1.xml", "destination": "/sitemap.xml", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+    },
+    {
+      "source": "/assets/(css|js|vendor)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    }
+  ]
+}

@@ -30,7 +30,7 @@ export OPENAI_API_KEY="sk-..."
 $env:OPENAI_API_KEY="sk-..."
 ```
 
-Alternatif: repo kökündeki `.env` dosyasına `OPENAI_API_KEY=sk-...` satırını yaz. Dosya `.gitignore`'da, commit'e girmez; script env'de anahtar yoksa buradan okur. **Siteyi klasör olarak yüklemeden (FTP, `public_html`) önce `.env`'i sil**, yoksa herkese açık olur.
+Alternatif: repo kökündeki `.env` dosyasına `OPENAI_API_KEY=sk-...` satırını yaz. Dosya `.gitignore`'da, commit'e girmez; script env'de anahtar yoksa buradan okur. Vercel yalnızca `tools/build.mjs`'in `dist/`'e kopyaladığı dosyaları yayınlar; `.env` oraya girmez.
 
 İş bitince anahtarı OpenAI panelinden sil (revoke).
 
@@ -104,7 +104,7 @@ git commit -m "Add generated media: per-take stills, workshop band, scroll-scrub
 git push
 ```
 
-Ardından main'e pull request aç ve statik hosting'e yayınla (Netlify, Vercel, Cloudflare Pages ya da mevcut sunucu).
+Ardından main'e pull request aç ve Vercel'de yayınla (adımlar: [SEO.md](SEO.md#yayına-alma-vercel--strato-domain)).
 
 ## Hâlâ açık olanlar (medyadan bağımsız)
 - [x] Açılış saatleri ve posta kodu (2026-09-27, RMK onaylı). SEO/GEO işleri ve site dışı yapılacaklar: [SEO.md](SEO.md).

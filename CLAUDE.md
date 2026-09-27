@@ -19,7 +19,8 @@ npx http-server -p 8080 -c-1 .
 - `assets/js/sound.js`: WebAudio sesleri (`RMKSound`). Varsayılan kapalı.
 - `assets/vendor/`: GSAP 3.15 ve Lenis 1.3 repoya gömülü; CDN kullanılmıyor.
 - `tools/generate_media.py` + `tools/media-prompts.json`: OpenAI ile görsel/video üretimi (`OPENAI_API_KEY` env'den ya da git-ignored `.env`'den okunur).
-- SEO/GEO: `<head>`'deki JSON-LD (AutoRepair + WebSite + FAQPage), `robots.txt`, `sitemap.xml`, `llms.txt`, Strato için `.htaccess`. Ayrıntılar ve site dışı yapılacaklar: `SEO.md`.
+- SEO/GEO: `<head>`'deki JSON-LD (AutoRepair + WebSite + FAQPage), `robots.txt`, `sitemap.xml`, `llms.txt`. Ayrıntılar ve site dışı yapılacaklar: `SEO.md`.
+- Yayın: Vercel (`vercel.json` → `node tools/build.mjs` → `dist/`). Domain ve e-posta Strato'da. **Siteye yeni bir public dosya eklersen** onu `tools/build.mjs`'deki `PUBLIC` listesine de ekle, yoksa yayınlanmaz.
 - **SSS cevaplarını değiştirirsen** `<head>`'deki FAQPage metnini de birebir aynı güncelle. İşletme bilgisi (isim, adres, saat) değişirse `index.html`, `llms.txt` ve `SEO.md`'deki NAP birlikte güncellenmeli.
 
 ## Dikkat edilecekler (öğrenilmiş dersler)

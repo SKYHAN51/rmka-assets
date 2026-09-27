@@ -1065,12 +1065,12 @@ html.lenis, html.lenis body { height: auto; }
 .action__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .contact {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   margin-top: 16px;
 }
-.contact > div { padding: 22px 20px 0 0; }
-.contact > div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.contact > div { padding: 20px 20px 20px 0; border-bottom: 1px solid var(--line); }
+.contact > div:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
 .contact dt {
   font: 400 10.5px/1 var(--f-mono);
   letter-spacing: 0.14em;
@@ -1279,7 +1279,7 @@ html.lenis, html.lenis body { height: auto; }
   .action__grid { grid-template-columns: 1fr; }
   .action__ctas .btn { width: 100%; }
   .contact { grid-template-columns: 1fr; }
-  .contact > div, .contact > div + div { padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .contact > div, .contact > div:nth-child(even) { padding: 18px 0; border-left: 0; }
   .clapper { width: min(100%, 420px); }
 
   .credits dl > div { grid-template-columns: 1fr; gap: 6px; text-align: center; }

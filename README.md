@@ -34,11 +34,14 @@ Her ekranda: film greni, vinyet, vizör köşeleri, scroll'a bağlı timecode (`
 
 `prefers-reduced-motion` açıksa intro, pin ve smooth scroll devre dışı kalır. JavaScript yüklenmezse sayfa statik ve eksiksiz görünür.
 
+## İletişim bilgileri
+
+- Telefon / WhatsApp: **06 11 56 06 03** (`tel:+31611560603`, `wa.me/31611560603`)
+- WhatsApp linkleri hazır bir mesajla açılır: *"Hallo RMK, ik wil graag een afspraak maken. Mijn kenteken is: "*
+- Not: Logo görselinde numara `06115606603` olarak yazılı, yani fazladan bir **6** var. Sitede logonun bu kısmı gizli, ama logo başka yerde (kartvizit, araç giydirme vb.) kullanılıyorsa düzeltilmeli.
+
 ## Yayından önce yapılacaklar
 
-- [ ] **WhatsApp numarası:** `index.html` içindeki tüm `31XXXXXXXXX` yer tutucularını gerçek numarayla değiştirin (ülke kodu 31, baştaki 0 ve + olmadan).
-  Logodaki numara (`06115606603`) 11 haneli; Hollanda mobil numaraları 10 hanelidir. Bu yüzden numara sitede kullanılmadı, lütfen doğrulayın.
-- [ ] JSON-LD bloğuna `"telephone"` ekleyin.
 - [ ] Varsa açılış saatlerini, KvK numarasını ve posta kodunu ekleyin.
 - [ ] Metinleri RMK ile birlikte kontrol edin. Mevcut site ve arama sonuçlarındaki bilgilerden taslak olarak yazıldı.
 

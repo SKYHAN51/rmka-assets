@@ -38,6 +38,7 @@
     "url": "https://rmka.nl/",
     "image": "https://rmka.nl/assets/img/og-image.jpg",
     "logo": "https://rmka.nl/assets/img/emblem.webp",
+    "telephone": "+31611560603",
     "email": "info@rmka.nl",
     "address": {
       "@type": "PostalAddress",
@@ -56,7 +57,6 @@
     ]
   }
   </script>
-  <!-- TODO: telefoonnummer toevoegen aan JSON-LD ("telephone") zodra het juiste nummer bekend is. -->
 
   <script defer src="assets/vendor/gsap.min.js"></script>
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
@@ -106,8 +106,7 @@
     </nav>
 
     <div class="hud__actions">
-      <!-- TODO: vervang 31XXXXXXXXX overal door het echte WhatsApp-nummer (landcode 31, zonder 0 en zonder +). -->
-      <a class="btn btn--pill" href="https://wa.me/31XXXXXXXXX" target="_blank" rel="noopener" data-cursor="WhatsApp">
+      <a class="btn btn--pill" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp">
         <i class="dot" aria-hidden="true"></i>Plan afspraak
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -125,6 +124,7 @@
       <a href="#afspraak"><span>04</span>Afspraak</a>
     </nav>
     <div class="menu__foot">
+      <a href="tel:+31611560603">06 11 56 06 03</a>
       <a href="mailto:info@rmka.nl">info@rmka.nl</a>
       <span>Segment 24E, Duiven</span>
     </div>
@@ -163,7 +163,7 @@
         <div class="hero__foot">
           <p class="hero__lead">Onderhoud, reparatie, banden, remmen en onderstel — uitgevoerd met de precisie van een filmset. RMK Autoservice, Duiven.</p>
           <div class="hero__ctas">
-            <a class="btn btn--primary" href="https://wa.me/31XXXXXXXXX" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
+            <a class="btn btn--primary" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
               Plan via WhatsApp
               <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -270,7 +270,7 @@
               <p>Schokdempers, veren, draagarmen en fuseekogels — voor een auto die weer strak op de weg ligt.</p>
             </li>
             <li class="frame frame--cta">
-              <a href="https://wa.me/31XXXXXXXXX" target="_blank" rel="noopener" data-cursor="WhatsApp">
+              <a href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp">
                 <span class="frame__meta"><span>Take 06</span><span>Uw beurt</span></span>
                 <span class="frame--cta__title">Uw auto<br>in beeld?</span>
                 <span class="frame--cta__link">Plan een afspraak
@@ -368,11 +368,11 @@
           <p class="action__lead">Stuur ons een bericht via WhatsApp met uw kenteken en wat er speelt. Wij regelen de rest.</p>
 
           <div class="action__ctas">
-            <a class="btn btn--primary btn--lg" href="https://wa.me/31XXXXXXXXX" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
+            <a class="btn btn--primary btn--lg" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
               Afspraak via WhatsApp
               <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn--ghost btn--lg" href="mailto:info@rmka.nl" data-cursor="Mail">info@rmka.nl</a>
+            <a class="btn btn--ghost btn--lg" href="tel:+31611560603" data-cursor="Bel">Bel 06 11 56 06 03</a>
           </div>
 
           <dl class="contact">
@@ -381,12 +381,16 @@
               <dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Segment+24E+Duiven" target="_blank" rel="noopener" data-cursor="Route">Segment 24E<br>Duiven, Gelderland</a></dd>
             </div>
             <div>
+              <dt>Telefoon</dt>
+              <dd><a href="tel:+31611560603">06 11 56 06 03</a></dd>
+            </div>
+            <div>
               <dt>E-mail</dt>
               <dd><a href="mailto:info@rmka.nl">info@rmka.nl</a></dd>
             </div>
             <div>
               <dt>Afspraak</dt>
-              <dd><a href="https://wa.me/31XXXXXXXXX" target="_blank" rel="noopener">Via WhatsApp</a></dd>
+              <dd><a href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener">Via WhatsApp</a></dd>
             </div>
           </dl>
         </div>
@@ -425,7 +429,8 @@
         <div><dt>Regie &amp; uitvoering</dt><dd>RMK Autoservice</dd></div>
         <div><dt>Monteurs</dt><dd>Team RMK</dd></div>
         <div><dt>Locatie</dt><dd>Segment 24E, Duiven</dd></div>
-        <div><dt>Contact</dt><dd><a href="mailto:info@rmka.nl">info@rmka.nl</a></dd></div>
+        <div><dt>Telefoon</dt><dd><a href="tel:+31611560603">06 11 56 06 03</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:info@rmka.nl">info@rmka.nl</a></dd></div>
         <div><dt>Met dank aan</dt><dd>Al onze klanten</dd></div>
       </dl>
     </div>

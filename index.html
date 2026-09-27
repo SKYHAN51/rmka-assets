@@ -28,7 +28,10 @@
   <link rel="preload" href="assets/img/hero.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="assets/img/emblem.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    document.documentElement.classList.add('js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('is-motion');
+  </script>
 
   <script type="application/ld+json">
   {
@@ -62,6 +65,8 @@
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/vendor/SplitText.min.js"></script>
   <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/js/cinema-gl.js"></script>
+  <script defer src="assets/js/sound.js"></script>
   <script defer src="assets/js/main.js"></script>
 </head>
 
@@ -109,6 +114,10 @@
       <a class="btn btn--pill" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp">
         <i class="dot" aria-hidden="true"></i>Plan afspraak
       </a>
+      <button class="sound-toggle" type="button" aria-pressed="false" data-cursor="Geluid">
+        <span class="sound-toggle__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="sound-toggle__label">Geluid <b>uit</b></span>
+      </button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
         <span class="menu-toggle__label">Menu</span>
         <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
@@ -146,32 +155,43 @@
 
     <!-- ░░ SC 01 — Opening ░░ -->
     <section class="hero" id="top" data-scene="01" data-scene-name="Opening">
-      <div class="hero__media">
-        <img src="assets/img/hero.webp" alt="Grijze BMW M3 met brandende koplampen in de werkplaats van RMK Autoservice, met vonken op de achtergrond" width="1024" height="1024" fetchpriority="high" decoding="async">
-      </div>
-      <div class="hero__shade" aria-hidden="true"></div>
-      <div class="bars" aria-hidden="true"><i class="bars__top"></i><i class="bars__bottom"></i></div>
+      <div class="hero__stage">
+        <div class="hero__media">
+          <img src="assets/img/hero.webp" alt="Grijze BMW M3 met brandende koplampen in de werkplaats van RMK Autoservice, met vonken op de achtergrond" width="1024" height="1024" fetchpriority="high" decoding="async">
+          <canvas class="hero__gl" aria-hidden="true"></canvas>
+        </div>
+        <canvas class="hero__sparks" aria-hidden="true"></canvas>
+        <div class="hero__shade" aria-hidden="true"></div>
 
-      <div class="hero__inner">
-        <p class="slug hero__slug"><span>SC 01</span>INT. Werkplaats Duiven — Nacht</p>
+        <!-- Title sequence: the footage plays inside the letters, scroll dollies through them -->
+        <canvas class="hero__mask" aria-hidden="true"></canvas>
 
-        <h1 class="hero__title">
-          <span class="hero__pre">Uw auto speelt</span>
-          <span class="hero__main" data-split>De hoofdrol</span>
-        </h1>
-
-        <div class="hero__foot">
-          <p class="hero__lead">Onderhoud, reparatie, banden, remmen en onderstel — uitgevoerd met de precisie van een filmset. RMK Autoservice, Duiven.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--primary" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
-              Plan via WhatsApp
-              <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="btn btn--ghost" href="#werk">Bekijk het werk</a>
-          </div>
+        <div class="hero__opener" aria-hidden="true">
+          <p class="hero__opener-top"><span>Een productie van</span> RMK Autoservice — Duiven</p>
+          <p class="hero__opener-bottom"><span>Scroll om de film te starten</span><i></i></p>
         </div>
 
-        <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
+        <div class="bars" aria-hidden="true"><i class="bars__top"></i><i class="bars__bottom"></i></div>
+
+        <div class="hero__inner">
+          <p class="slug hero__slug"><span>SC 01</span>INT. Werkplaats Duiven — Nacht</p>
+
+          <h1 class="hero__title">
+            <span class="hero__pre">Uw auto speelt</span>
+            <span class="hero__main" data-split>De hoofdrol</span>
+          </h1>
+
+          <div class="hero__foot">
+            <p class="hero__lead">Onderhoud, reparatie, banden, remmen en onderstel — uitgevoerd met de precisie van een filmset. RMK Autoservice, Duiven.</p>
+            <div class="hero__ctas">
+              <a class="btn btn--primary" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-magnetic data-cursor="WhatsApp">
+                Plan via WhatsApp
+                <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn--ghost" href="#werk">Bekijk het werk</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -197,7 +217,12 @@
         <div class="story__aside">
           <p class="slug"><span>SC 02</span>INT. RMK Autoservice — Dag</p>
           <figure class="story__emblem">
-            <img src="assets/img/emblem.webp" alt="Logo van RMK Autoservice: een chromen tandwiel met rode neonring" width="806" height="605" loading="lazy" decoding="async">
+            <div class="story__emblem-tilt">
+              <div class="story__emblem-inner">
+                <img src="assets/img/emblem.webp" alt="Logo van RMK Autoservice: een chromen tandwiel met rode neonring" width="806" height="605" loading="lazy" decoding="async">
+                <span class="story__shine" aria-hidden="true"></span>
+              </div>
+            </div>
           </figure>
         </div>
 
@@ -234,8 +259,13 @@
             <p class="slug"><span>SC 03</span>INT. Brug 1 — Doorlopend</p>
             <h2 class="display">Vijf <em>takes.</em></h2>
           </div>
-          <p class="work__intro">Van een kleine beurt tot complete reparaties: alles onder één dak, met dezelfde aandacht voor detail.</p>
+          <div class="work__aside">
+            <p class="work__intro">Van een kleine beurt tot complete reparaties: alles onder één dak, met dezelfde aandacht voor detail.</p>
+            <p class="work__count" aria-hidden="true">Take <b data-take>01</b> / 05</p>
+          </div>
         </header>
+
+        <div class="work__ghost" aria-hidden="true"><span>Onderhoud · Reparatie · Banden · Remmen · Onderstel ·</span></div>
 
         <div class="strip">
           <ol class="strip__track">
@@ -288,15 +318,20 @@
       <div class="closeup__pin">
         <div class="closeup__frame">
           <img src="assets/img/hero.webp" alt="Close-up van een brandende LED-koplamp" loading="lazy" decoding="async">
+          <canvas class="closeup__gl" aria-hidden="true"></canvas>
         </div>
         <div class="closeup__hud" aria-hidden="true">
           <span class="closeup__tl">Extreme close-up — Koplamp</span>
           <span class="closeup__tr">f/1.4 · 1/48 · ISO 800</span>
-          <span class="closeup__bl">Focus ▸ 0.8 m</span>
+          <span class="closeup__bl">Focus ▸ <b data-focus>4.0</b> m</span>
           <span class="closeup__br">A-cam · Rol 026</span>
           <div class="focus"><i></i><i></i><i></i><i></i></div>
         </div>
-        <h2 class="closeup__title" id="closeup-title"><span>Elk detail</span> <em>telt.</em></h2>
+        <h2 class="closeup__title" id="closeup-title">
+          <span class="closeup__w closeup__w--l">Elk</span>
+          <span class="closeup__w closeup__w--r">detail</span>
+          <em class="closeup__w closeup__w--c">telt.</em>
+        </h2>
       </div>
     </section>
 
@@ -309,55 +344,87 @@
         </div>
 
         <ol class="boards">
-          <li class="board">
-            <div class="board__frame">
-              <div class="board__top"><span>Paneel 01</span><span>Wide shot</span></div>
-              <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
-                <path d="M52 24h56a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H78l-14 12v-12H52a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z"/>
-                <path d="M60 38h40M60 47h26"/>
-              </svg>
-            </div>
-            <h3><span>01</span>Contact</h3>
-            <p>Stuur een WhatsApp-bericht met uw kenteken en wat er speelt. We plannen samen een moment dat u past.</p>
+          <li class="board" style="--i:0">
+            <article class="board__card">
+              <div class="board__num" aria-hidden="true">01</div>
+              <div class="board__frame">
+                <div class="board__top"><span>Paneel 01</span><span>Wide shot</span></div>
+                <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
+                  <path d="M52 24h56a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H78l-14 12v-12H52a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z"/>
+                  <path d="M60 38h40M60 47h26"/>
+                </svg>
+              </div>
+              <div class="board__copy">
+                <p class="board__shot">Paneel 01 / 04 — Wide shot</p>
+                <h3>Contact</h3>
+                <p>Stuur een WhatsApp-bericht met uw kenteken en wat er speelt. We plannen samen een moment dat u past.</p>
+              </div>
+            </article>
           </li>
-          <li class="board">
-            <div class="board__frame">
-              <div class="board__top"><span>Paneel 02</span><span>Close-up</span></div>
-              <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
-                <circle cx="74" cy="42" r="20"/>
-                <path d="M88 56l18 18"/>
-                <path d="M66 42l6 6 10-12"/>
-              </svg>
-            </div>
-            <h3><span>02</span>Diagnose</h3>
-            <p>We bekijken uw auto grondig en vertellen eerlijk wat nodig is — en wat niet.</p>
+          <li class="board" style="--i:1">
+            <article class="board__card">
+              <div class="board__num" aria-hidden="true">02</div>
+              <div class="board__frame">
+                <div class="board__top"><span>Paneel 02</span><span>Close-up</span></div>
+                <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
+                  <circle cx="74" cy="42" r="20"/>
+                  <path d="M88 56l18 18"/>
+                  <path d="M66 42l6 6 10-12"/>
+                </svg>
+              </div>
+              <div class="board__copy">
+                <p class="board__shot">Paneel 02 / 04 — Close-up</p>
+                <h3>Diagnose</h3>
+                <p>We bekijken uw auto grondig en vertellen eerlijk wat nodig is — en wat niet.</p>
+              </div>
+            </article>
           </li>
-          <li class="board">
-            <div class="board__frame">
-              <div class="board__top"><span>Paneel 03</span><span>Tracking</span></div>
-              <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
-                <path d="M58 70l30-30"/>
-                <path d="M84 30a14 14 0 1 0 18 18l-8-2-4-4-2-8z"/>
-                <circle cx="56" cy="72" r="4"/>
-              </svg>
-            </div>
-            <h3><span>03</span>Het werk</h3>
-            <p>Vakkundig uitgevoerd in onze werkplaats, met aandacht voor elk detail.</p>
+          <li class="board" style="--i:2">
+            <article class="board__card">
+              <div class="board__num" aria-hidden="true">03</div>
+              <div class="board__frame">
+                <div class="board__top"><span>Paneel 03</span><span>Tracking</span></div>
+                <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
+                  <path d="M58 70l30-30"/>
+                  <path d="M84 30a14 14 0 1 0 18 18l-8-2-4-4-2-8z"/>
+                  <circle cx="56" cy="72" r="4"/>
+                </svg>
+              </div>
+              <div class="board__copy">
+                <p class="board__shot">Paneel 03 / 04 — Tracking</p>
+                <h3>Het werk</h3>
+                <p>Vakkundig uitgevoerd in onze werkplaats, met aandacht voor elk detail.</p>
+              </div>
+            </article>
           </li>
-          <li class="board">
-            <div class="board__frame">
-              <div class="board__top"><span>Paneel 04</span><span>Finale</span></div>
-              <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
-                <path d="M40 76l26-56M120 76L94 20"/>
-                <path d="M80 26v8M80 44v8M80 62v10"/>
-              </svg>
-            </div>
-            <h3><span>04</span>Aflevering</h3>
-            <p>Uw auto terug de weg op: veilig, soepel en klaar voor de volgende rit.</p>
+          <li class="board" style="--i:3">
+            <article class="board__card">
+              <div class="board__num" aria-hidden="true">04</div>
+              <div class="board__frame">
+                <div class="board__top"><span>Paneel 04</span><span>Finale</span></div>
+                <svg class="board__sketch" viewBox="0 0 160 90" aria-hidden="true">
+                  <path d="M40 76l26-56M120 76L94 20"/>
+                  <path d="M80 26v8M80 44v8M80 62v10"/>
+                </svg>
+              </div>
+              <div class="board__copy">
+                <p class="board__shot">Paneel 04 / 04 — Finale</p>
+                <h3>Aflevering</h3>
+                <p>Uw auto terug de weg op: veilig, soepel en klaar voor de volgende rit.</p>
+              </div>
+            </article>
           </li>
         </ol>
       </div>
     </section>
+
+    <!-- ░░ CTA band ░░ -->
+    <a class="cta-roll" href="https://wa.me/31611560603?text=Hallo%20RMK%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Mijn%20kenteken%20is%3A%20" target="_blank" rel="noopener" data-cursor="WhatsApp" aria-label="Plan uw afspraak via WhatsApp">
+      <span class="cta-roll__track" aria-hidden="true">
+        <span>Plan uw afspraak</span><i></i><span>Plan uw afspraak</span><i></i><span>Plan uw afspraak</span><i></i>
+        <span>Plan uw afspraak</span><i></i><span>Plan uw afspraak</span><i></i><span>Plan uw afspraak</span><i></i>
+      </span>
+    </a>
 
     <!-- ░░ SC 06 — Afspraak ░░ -->
     <section class="action section" id="afspraak" data-scene="06" data-scene-name="Afspraak">

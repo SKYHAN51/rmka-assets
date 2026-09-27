@@ -21,18 +21,25 @@ Klasörün tamamını herhangi bir statik hosting'e yükleyin (Netlify, Vercel, 
 | Sahne | Bölüm | Efekt |
 | --- | --- | --- |
 | Intro | Film leader 3·2·1 → RMK logosu (neon titreşimiyle yanar) + "presenteert" | Perde açılır; oturum başına bir kez oynar, tıklayınca atlanır |
-| SC 01 | Hero — "Uw auto speelt de hoofdrol" | Letterbox bantları, focus-pull (blur → net), harf harf başlık |
-| — | Marquee | Scroll hızına göre hızlanır |
-| SC 02 | Het verhaal | Kelimeler okundukça aydınlanır, logo parallax |
-| SC 03 | Het werk — "Vijf takes." | Sabitlenmiş yatay film şeridi (mobilde kaydırmalı) |
-| SC 04 | Close-up — "Elk detail telt." | Letterbox çerçeve tam ekrana açılır, kamera ileri gider |
-| SC 05 | Werkwijze — "Het draaiboek." | Storyboard panelleri, çizimler kendini çizer |
-| SC 06 | Afspraak — "Klaar voor de volgende take?" | Klaket kapanır + flaş |
+| SC 01 | **Title sequence:** araba dev "RMK" harflerinin içinde oynar | Scroll kamerayı M harfinin içinden geçirir (zoom-through), ardından "Uw auto speelt DE HOOFDROL" başlığı ve CTA'lar gelir |
+| — | Marquee | Scroll hızına göre hızlanır ve eğilir |
+| SC 02 | Het verhaal | Kelimeler okundukça aydınlanır; krom logo scroll'la 3D döner, üzerinden ışık geçer, fareyle eğilir |
+| SC 03 | Het werk — "Vijf takes." | Sabitlenmiş yatay film şeridi; her kare **amber film negatifi** olarak gelir ve ortaya yaklaştıkça "banyo olup" pozitife döner; arkada paralaks dev yazı ve Take sayacı |
+| SC 04 | Close-up — "Elk detail telt." | Layered zoom: "ELK" ve "DETAIL" iki yana açılır, kare tam ekrana büyür, WebGL lens odaklanır (rack focus) ve farda anamorfik flare yanar |
+| SC 05 | Werkwijze — "Het draaiboek." | Storyboard kartları üst üste yığılır (sticky stack); çizimler kendini çizer |
+| — | CTA bandı | Dev "PLAN UW AFSPRAAK" şeridi, üzerine gelince kırmızıyla dolar |
+| SC 06 | Afspraak — "Klaar voor de volgende take?" | Klaket kapanır + flaş (+ ses açıksa klaket sesi) |
 | Aftiteling | Footer | Jenerik + RMK logosu dolar, "Terugspoelen" başa sarar |
 
-Her ekranda: film greni, vinyet, vizör köşeleri, scroll'a bağlı timecode (`REC 00:01:12:08`), aktif sahne göstergesi ve masaüstünde özel imleç ile manyetik butonlar.
+**Her ekranda:** film greni, vinyet, vizör köşeleri, scroll'a bağlı timecode (`REC 00:01:12:08`), aktif sahne göstergesi, masaüstünde özel imleç ve manyetik butonlar, scroll hızıyla eğilen başlıklar.
 
-`prefers-reduced-motion` açıksa intro, pin ve smooth scroll devre dışı kalır. JavaScript yüklenmezse sayfa statik ve eksiksiz görünür.
+**WebGL kamera** (`assets/js/cinema-gl.js`, bağımlılık yok): focus pull, kromatik sapma, scroll hızıyla bükülen görüntü, fara kilitli anamorfik lens flare ve ghost'lar, split-tone renk. Ekran dışındayken durur. WebGL yoksa normal `<img>` görünür.
+
+**Kıvılcımlar:** Fotoğraftaki kaynak makinesinden çıkan kıvılcımlar (2D canvas), fareden kaçar.
+
+**Ses** (`assets/js/sound.js`, WebAudio ile üretiliyor, dosya yok): projektör tıkırtısı + uğultu, scroll hızına göre "whoosh", klaket sesi. Varsayılan kapalı, header'daki "Geluid" butonuyla açılır.
+
+`prefers-reduced-motion` açıksa intro, pin, WebGL ve smooth scroll devre dışı kalır; sayfa statik ve eksiksiz görünür. JavaScript yüklenmezse de öyle.
 
 ## İletişim bilgileri
 
@@ -50,7 +57,9 @@ Her ekranda: film greni, vinyet, vizör köşeleri, scroll'a bağlı timecode (`
 ```
 index.html
 assets/css/style.css      tüm stiller (tasarım token'ları :root içinde)
-assets/js/main.js         intro, Lenis, ScrollTrigger sahneleri, HUD, imleç
+assets/js/main.js         intro, Lenis, ScrollTrigger sahneleri, RMK maskesi, kıvılcımlar, HUD, imleç
+assets/js/cinema-gl.js    WebGL kamera (shader)
+assets/js/sound.js        WebAudio ses tasarımı
 assets/img/               optimize görseller (hero.webp 84 KB, emblem.webp, og-image.jpg, favicons)
 assets/fonts/             Anton, Instrument Serif, JetBrains Mono, Inter (OFL)
 assets/vendor/            GSAP 3.15 + ScrollTrigger + SplitText, Lenis 1.3

@@ -1,0 +1,55 @@
+{
+  "style": "Cinematic night photograph inside a moody Dutch auto repair workshop. Charcoal and graphite tones, cool blue LED accents, warm orange welding-spark bokeh in the far background, wet concrete floor, shallow depth of field, anamorphic lens character, subtle film grain, photorealistic, premium automotive advertising look. No text, no letters, no logos, no badges, no watermarks, no people's faces.",
+  "jobs": [
+    {
+      "id": "take-onderhoud",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/take-onderhoud.webp",
+      "prompt": "Extreme close-up of golden fresh engine oil pouring in a thin glossy stream into the filler neck of a modern engine, gloved mechanic hand at frame edge, engine bay lit by a single cool work lamp."
+    },
+    {
+      "id": "take-reparatie",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/take-reparatie.webp",
+      "prompt": "Mechanic's gloved hands with a torque wrench on an engine component under an open bonnet, sparks glowing far behind, focus on the chrome tool and the metal parts."
+    },
+    {
+      "id": "take-banden",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/take-banden.webp",
+      "prompt": "Low close-up of a performance tyre tread and dark alloy wheel mounted on a wheel balancing machine, rubber texture in sharp detail, water droplets, blue rim light."
+    },
+    {
+      "id": "take-remmen",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/take-remmen.webp",
+      "prompt": "Close-up of a drilled and ventilated steel brake disc with a red brake caliper, wheel removed, car on a lift, disc surface catching a thin line of cool light."
+    },
+    {
+      "id": "take-onderstel",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/take-onderstel.webp",
+      "prompt": "Low angle view underneath a car raised on a two-post lift, suspension coilover spring and control arms in focus, lit by a handheld LED work lamp, dark workshop ceiling above."
+    },
+    {
+      "id": "werkplaats-wide",
+      "type": "image",
+      "size": "1536x1024",
+      "out": "assets/img/gen/werkplaats-wide.webp",
+      "prompt": "Wide establishing shot of the whole workshop at night: a matte grey sports sedan on a lift in the centre, tool walls, hanging work lights, one distant welder creating a shower of orange sparks."
+    },
+    {
+      "id": "dolly-headlight",
+      "type": "video",
+      "size": "1280x720",
+      "seconds": "8",
+      "out": "assets/video/dolly-headlight.mp4",
+      "prompt": "One continuous slow cinematic dolly-in, camera at bonnet height, gliding toward the glowing LED headlight of a matte grey performance sedan parked in the dark workshop. Welding sparks drift in the background bokeh, a soft anamorphic blue flare blooms on the headlight at the end. Steady, smooth, no cuts."
+    }
+  ]
+}
